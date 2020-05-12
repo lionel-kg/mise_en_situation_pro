@@ -1,18 +1,12 @@
 import React from 'react';
-import Profil from './Profil';
 import './App.css';
+import Image from './image';
 
 function App() {
 
-  fetch('http://127.0.0.1:8000/api/users')
-  .then(response => response.json())
-  .then(result =>{
-      console.log(result);
-  });
-
   return (
     <div className="App">
-      <Profil></Profil>
+      <Image></Image>
     </div>
   );
 }
