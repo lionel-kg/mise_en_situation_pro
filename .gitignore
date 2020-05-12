@@ -1,0 +1,4 @@
+.tmp
+.swp
+vendor
+node_module
