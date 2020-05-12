@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SecurityController!{% endblock %}
+
+{% block body %}
+    <h1>inscription </h1>
+    <div>
+        {{form_start(form)}}
+        {{form_row(form.username,{'label': 'Nom d\'utilisateur ','attr':{'placeholder':'john.doe'}}) }}
+        {{form_row(form.email,{'label': 'Adresse email ','attr':{'placeholder':'exemple@gmail.com'}}) }}
+        {{form_row(form.password, {'label': 'Mot de passe ','attr':{'placeholder':'********'}})}}
+        {{form_row(form.confirm_password,{'label': 'Mot de passe de confirmation ','attr':{'placeholder':'********'}})}}
+        {{form_row(form.submit)}}
+        {{form_end(form)}}
+    </div>
+{% endblock %}

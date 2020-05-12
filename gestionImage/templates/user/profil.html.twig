@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UtilisateurController!{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/profil.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="card col-6 ml-5">
+        <div class="card-body">
+            <div class="row">
+                <h5 class="card-title m-auto">Mon profil</h5>
+            </div>
+            <div class="column col-12">
+                <div class="column col-md-12">
+                    <div class="img-profil column col-6 mt-2">
+                        <img src="/user/image" alt="" width="170px" height="200px">
+
+                        <img src="uploads\image\{{user.filename}}" alt="" width="170px" height="200px">
+                        
+                        <div><a class='change-img' href='/upload'>changer de photo</a></div>
+                    </div>
+                    <div class="column col-6 mt-2">
+                        <div>
+                            <label>username :</label>  <span>{{user.username}}</span> 
+                        </div>
+                        <div>
+                            <label>age :</label> <span>18 ans</span>
+                        </div>
+                        <div>
+                            <label>ranked :</label> <span>gold III</span>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+            </div><div class="btn-deco"><a class="button" href="/deconnexion">deconnexion</a></div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
+{% block javascripts %}<script src='js/script.js'></script>{% endblock %}
