@@ -10,6 +10,17 @@ use Faker\Factory;
 use Faker\Provider\en_US\Person;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
+function getHttpCode($http_response_header)
+{
+        if(is_array($http_response_header))
+        {
+            $parts=explode(' ',$http_response_header[0]);
+            if(count($parts)>1) //HTTP/1.0 code text
+                return intval($parts[1]); //Get code
+        }
+        return 0;
+}
+
 class UserFixtures extends Fixture
 {
     private $faker;
@@ -26,9 +37,19 @@ class UserFixtures extends Fixture
         $user = new User();
         $user->setUsername($this->faker->userName());
         $user->setEmail($user->getUsername().'@gmail.com');
-        $password = $this->faker->password();
-        $user->setPassword($password);
-        $user->setFileName('image.png');
+
+        $user->setPassword($this->passwordEncoder->encodePassword($user,'test'));
+        $user->setFileName('https://i.pinimg.com/originals/f8/db/c6/f8dbc665e892a01b885ae515309dfa27.jpg');
+
+        $image = null;
+        while (true) {
+            $image = @file_get_contents("https://robohash.org/{$user->getUsername()}?size=50x50");
+            if (getHttpCode($http_response_header) === 200) {
+                break;
+            }
+            echo "Erreur de chargement, {$this->id} : {$user->getUsername()} => re-recupération\n";
+        }
+        $user->setImageFile($image);
         return $user;
     }
 

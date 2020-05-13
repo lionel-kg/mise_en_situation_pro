@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
+use App\Controller\GetImageController;
+use App\Controller\GetUserController;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -11,34 +13,51 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  *@ApiResource(
- *formats={"json","image"={"image/png"}},
- *  normalizationContext={"groups"={"read:user"}},
- *  *itemOperations={
+ *  
+ *  itemOperations={
+ *      "get"={
+*             "method"="GET",
+*             "path"="/user",
+*             "controller"=GetUserController::class,
+*             "read"=false,
+*             "normalization_context"={"groups"={"user:read"}},
+*             "openapi_context"={
+*                  "summary"= "no parameters",
+*                  "parameters"= {},
+*              
+*                  "Responses"= {
+*                  "200"={"description"="response succes"},
+*                  "400"={"description"="response error"},
+*                  }
+*              },
+ *  },
  * "get/user/image"={
  *             "method"="GET",
  *             "path"="/user/image",
- *             "controller"=GetUserAvatarController::class,
+ *             "formats"={"json","image"={"image/png"}},
+ *             "controller"= GetImageController::class,
  *             "read"=false,
  *             "normalization_context"={"groups"={"image"}},
  *              "openapi_context"={
  *                  "summary"= "no parameters",
  *                  "parameters"= {},
- *              },
- *              "Responses"= {
- *                  "200"={"description"="response succes",
- *                          "content" = {
- *                                          "image/png"={
- *                                                      "schema"={
- *                                                                 "type"="string",
- *                                                                  "format"="binary"}
- *                                                      }
- *                          }
- *                          },
- *                  "400"={"description"="response error"},
+ *               
+    *               "Responses"= {
+    *                  "200"={"description"="response succes",
+    *                          "content" = {
+    *                                          "image/png"={
+    *                                                      "schema"={
+    *                                                                 "type"="string",
+    *                                                                  "format"="binary"}
+    *                                                      }
+    *                          }
+    *                          },
+    *                  "400"={"description"="response error"},
+    *                }
  *              },
  *              
  *  },
-
+ *   "put"={"security"= "is_granted('ROLE_USER') and object.owner == user", "security_message"="Un utilisateur vient de se connecter."}, 
  *},
 
  *)
@@ -54,7 +73,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"read:user"})
+     * @Groups({"user:read"})
      */
     private $username;
 
@@ -65,21 +84,29 @@ class User implements UserInterface
     private $email;
 
     /**
+     * @var string The hashed password
      * @ORM\Column(type="string", length=255)
      */
     private $password;
 
     /**
      * @ORM\Column(type="blob", nullable=true)
-     * @Groups({"get_image"})
+     * @Groups({"image"})
      */
     private $imagefile;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"read:user"})
+     * @Groups({"user:read"})
      */
     private $filename;
+
+     /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
+
+
 
     public function getId(): ?int
     {
