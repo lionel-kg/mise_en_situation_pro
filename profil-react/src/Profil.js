@@ -3,14 +3,6 @@ import React from 'react';
 import './profil.css';
 
 function Profil() {
-
-   
-  fetch('http://127.0.0.1:8000/api/users')
-  .then(response => response.json())
-  .then(result =>{
-      console.log(result);
-  });
-
   return (
     <div className="profil">
       <div className="container">
@@ -22,11 +14,7 @@ function Profil() {
                     <div className="column col-12">
                         <div className="column col-md-12">
                             <div className="img-profil column col-6 mt-2">
-                                
-                           
                                 <div><a className='change-img' href='http://localhost/miseEnSituationS4/phpLegacy/php/formImage.php'>changer de photo</a></div>
-                             
-                        
                             <div className="column col-6 mt-2">
                                 <div>
                                 <label>nom:</label><span></span> 
@@ -51,7 +39,7 @@ function Profil() {
           </div>
         </div>
       </div>
-  );
+ ); 
 }
 
 export default Profil;

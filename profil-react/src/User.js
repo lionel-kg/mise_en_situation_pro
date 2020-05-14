@@ -1,6 +1,6 @@
 import React from 'react';
 
-import UserList from './Userlist';
+
 class User extends React.Component
 {
    constructor(props){
@@ -10,7 +10,7 @@ class User extends React.Component
       };
     }
     getUsersFromApi(){
-      fetch('http://127.0.0.1:8000/api/users')
+      fetch('http://127.0.0.1:8000/api/user')
           .then(response => response.json())
           .then((result) =>{
               this.setState({
@@ -23,10 +23,10 @@ class User extends React.Component
       this.getUsersFromApi();
     }
   render(){
-    const {users} = this.state;
+    //const {users} = this.state;
 
     return (<div className="user">
-                <UserList users={users}></UserList>
+                
             </div>)
   }
 
