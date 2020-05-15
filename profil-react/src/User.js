@@ -1,33 +1,35 @@
 import React from 'react';
-
+import Profil from './Profil'
 
 class User extends React.Component
 {
    constructor(props){
       super(props);
       this.state = {
-          users: null,
+          user: {username: 'mihawk', filename: 'oikawa.jpg'},
       };
     }
-    getUsersFromApi(){
-      fetch('http://127.0.0.1:8000/api/user')
-          .then(response => response.json())
-          .then((result) =>{
-              this.setState({
-              users: result,
-            });
-            console.log(this.state.users)
-          });
-    }
+    /*getUsersFromApi(){
+      console.log('appel api user')
+      let url = 'http://127.0.0.1:8000/api/user'
+      fetch(url, {
+        credentials: 'same-origin'
+    })
+      .then(response => response.json())
+      .then(result =>{
+        console.log(result)
+      })
+  
+  }
+    
     componentDidMount(){
       this.getUsersFromApi();
-    }
+    }*/
   render(){
-    //const {users} = this.state;
 
     return (<div className="user">
-                
-            </div>)
+              <Profil user={this.state.user}></Profil>
+           </div>)
   }
 
 }
