@@ -2,7 +2,9 @@ import React from 'react';
 import './App.css';
 import User from './User';
 import Image from './Image';
-//import Login from './Login';
+import Login from './Login';
+import Logout from './Logout';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -23,9 +25,14 @@ function App() {
         <Route path="/image">
           <Image/>
         </Route>
-        
+        <Route path="/login">
+          <Login/>
+        </Route>
+        <Route path="/logout">
+          <Logout/>
+        </Route>
         <Route path="/">
-            <Redirect to="/profil"/>
+            <Redirect to="/login"/>
         </Route>
       </Switch>
     </Router>

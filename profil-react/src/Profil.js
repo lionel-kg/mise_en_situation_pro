@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children } from 'react';
 import './profil.css';
 
 class Profil extends React.Component {
@@ -16,11 +16,11 @@ class Profil extends React.Component {
                       <div className="column col-12">
                           <div className="column col-md-12">
                               <div className="img-profil column col-6 mt-2">
-                                  <img src={"/userImage/"+user.filename} alt='' width='70%'></img>
+                                  <img src={"/userImage/"} alt='' width='70%'></img>
                                   <div><a className='change-img' href='/image'>changer de photo</a></div>
                               <div className="column col-6 mt-2">
                                   <div>
-                                  <label>username:</label><span>{user.username}</span> 
+                                  <label>username:</label><span>{console.log(this.props.children)}</span> 
                                   </div>
                                   
                                   <div>
@@ -29,10 +29,7 @@ class Profil extends React.Component {
                                   <div>
                                       <label>ranked:</label> <span>gold III</span>
                                   </div>
-                                  
-                                  
                               </div>
-                              
                           </div>
                       </div><div className="btn-deco"><a className="button" href="/login">deconnexion</a></div>
                 </div>
