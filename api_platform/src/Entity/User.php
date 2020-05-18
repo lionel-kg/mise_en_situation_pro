@@ -13,7 +13,13 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  *@ApiResource(
- *  
+ *  collectionOperations={
+ *         "get"={
+ *              "method"="GET",
+ *              "path"="/users",
+ *              "normalization_context"={"groups"={"user:read"}},
+ *          }
+ *  },
  *  itemOperations={
  *      "get"={
 *             "method"="GET",

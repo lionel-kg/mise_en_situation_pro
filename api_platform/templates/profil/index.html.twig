@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfilController!{% endblock %}
+
+{% block body %}
+
+<div class="container">
+        <div class="card col-6 ml-5">
+            <div class="card-body">
+                <div class="row">
+                    <h5 class="card-title m-auto">Mon profil</h5>
+                </div>
+                <div class="column col-12">
+                    <div class="column col-md-12">
+                        <div class="img-profil column col-6 mt-2">
+                            <div id="img">
+                            
+                            </div>
+                            <div><a class='change-img' href=''>changer de photo</a></div>
+                        </div>
+                        <div class="column col-6 mt-2">
+                            <div>
+                                <label>username :</label><span name="username"></span> 
+                            </div>
+                            <div>
+                                <label>age:</label> <span>18 ans</span>
+                            </div>
+                            <div>
+                                <label>ranked:</label> <span>gold III</span>
+                            </div>
+                            
+                            
+                        </div>
+                        
+                    </div>
+                </div><div class="btn-deco"><a class="button" href="">deconnexion</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+<script type="text/javascript" src="/js/test.js"></script>
+{% endblock %}
