@@ -4,24 +4,28 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
-use App\Controller\GetImageController;
 use App\Controller\GetUserController;
+use App\Controller\GetImageController;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Entity(repositoryClass=UserRepository::class)
- *@ApiResource(
- *  collectionOperations={
- *         "get"={
- *              "method"="GET",
- *              "path"="/users",
- *              "normalization_context"={"groups"={"user:read"}},
- *          }
- *  },
- *  itemOperations={
- *      "get"={
+* @ORM\Entity(repositoryClass=UserRepository::class)
+*@ApiResource(
+*  collectionOperations={
+*
+*         "get"={
+*              "method"="GET",
+*              "path"="/users",
+*              "normalization_context"={"groups"={"user:read"}},
+*          }
+*  },
+*  itemOperations={
+*      "get"={
 *             "method"="GET",
 *             "path"="/user",
 *             "controller"=GetUserController::class,
@@ -36,38 +40,37 @@ use Symfony\Component\Security\Core\User\UserInterface;
 *                  "400"={"description"="response error"},
 *                  }
 *              },
- *  },
- * "get/user/image"={
- *             "method"="GET",
- *             "path"="/user/image",
- *             "formats"={"json","image"={"image/png"}},
- *             "controller"= GetImageController::class,
- *             "read"=false,
- *             "normalization_context"={"groups"={"image"}},
- *              "openapi_context"={
- *                  "summary"= "no parameters",
- *                  "parameters"= {},
- *               
-    *               "Responses"= {
-    *                  "200"={"description"="response succes",
-    *                          "content" = {
-    *                                          "image/png"={
-    *                                                      "schema"={
-    *                                                                 "type"="string",
-    *                                                                  "format"="binary"}
-    *                                                      }
-    *                          }
-    *                          },
-    *                  "400"={"description"="response error"},
-    *                }
- *              },
- *              
- *  },
- *   "put"={"security"= "is_granted('ROLE_USER') and object.owner == user", "security_message"="Un utilisateur vient de se connecter."}, 
- *},
-
- *)
- */
+*       },
+*       "get/user/image"={
+*             "method"="GET",
+*             "path"="/user/image",
+*             "formats"={"json","image"={"image/png"}},
+*             "controller"= GetImageController::class,
+*             "read"=false,
+*             "normalization_context"={"groups"={"image"}},
+*              "openapi_context"={
+*                  "summary"= "no parameters",
+*                  "parameters"= {},
+*               
+*               "Responses"= {
+*                  "200"={"description"="response succes",
+*                          "content" = {
+*                                          "image/png"={
+*                                                      "schema"={
+*                                                                 "type"="string",
+*                                                                  "format"="binary"}
+*                                                      }
+*                          }
+*                          },
+*                  "400"={"description"="response error"},
+*                }
+*              },
+*              
+*       },
+*},
+*)
+* @Vich\Uploadable
+*/
 class User implements UserInterface
 {
     /**
@@ -107,6 +110,13 @@ class User implements UserInterface
      */
     private $filename;
 
+     /**
+     * @var File|null
+     * @Assert\NotNull(groups={"file_create"})
+     */
+    private $file;
+
+    
      /**
      * @ORM\Column(type="json")
      */
@@ -210,6 +220,14 @@ class User implements UserInterface
     {
         $this->roles = $roles;
 
+        return $this;
+    }
+    public function getFile(){
+        return $this->file;
+    }
+    public function setFile(?File $file): self
+    {
+        $this->file = $file;
         return $this;
     }
 
