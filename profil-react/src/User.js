@@ -12,7 +12,7 @@ class User extends React.Component
     }
     getUsersFromApi(){
       console.log('appel api user')
-      let url = 'http://127.0.0.1:8000/api/utilisateurs'
+      let url = 'http://127.0.0.1:8000/api/users'
       fetch(url, {
         credentials: 'same-origin'
     })

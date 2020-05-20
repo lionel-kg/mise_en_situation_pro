@@ -4,7 +4,7 @@ import './profil.css';
 class Profil extends React.Component {
   render(){
     const user = this.props.user;
-   
+   const Children = this.props.Children
     return (
       <div className="profil">
         <div className="container">
@@ -20,7 +20,7 @@ class Profil extends React.Component {
                                   <div><a className='change-img' href='/image'>changer de photo</a></div>
                               <div className="column col-6 mt-2">
                                   <div>
-                                  <label>username:</label><span>{console.log(this.props.children)}</span> 
+                                  <label>username:</label><span>{console.log(this.props.Children)}</span> 
                                   </div>
                                   
                                   <div>
