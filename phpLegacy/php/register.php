@@ -33,9 +33,9 @@ SQL
 
         $stmt->execute();
         echo 'insertion effectuée';
-        header("location: http://localhost/miseEnSituationS4/phpLegacy/connexion.html");
+        header("location: http://localhost/mise-en-situation-s.4/phpLegacy/connexion.html");
         exit();
     }
     echo 'cet email est deja utilisé';
-    header("location: http://localhost/miseEnSituationS4/phpLegacy/inscription.html?error=email");
+    header("location: http://localhost/mise-en-situation-s.4/phpLegacy/inscription.html?error=email");
     exit();

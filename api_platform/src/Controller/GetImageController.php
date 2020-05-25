@@ -12,13 +12,7 @@ class GetImageController extends AbstractController
     {
         $user = $this->getUser();
         if ($user != null){
-            $response = new Response(
-                stream_get_contents($user->getImageFile()),
-                Response::HTTP_OK,
-                ['Content-Type' => 'image/png']
-            );
-            return $response;
-                
+            echo $user->getImageFile(); 
         }
         else{
             throw $this->createNotFoundException("user doesn't exist");

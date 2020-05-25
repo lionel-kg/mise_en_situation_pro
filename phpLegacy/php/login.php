@@ -22,7 +22,7 @@ SQL
     
 
     if($stmt->rowCount() == 0){
-        header("Location: http://localhost/miseEnSituationS4/phpLegacy/connexion.html?msg=saisieinvalide");
+        header("Location: http://localhost/mise-en-situation-s.4/phpLegacy/connexion.html?msg=saisieinvalide");
         exit();
     }
     else{
@@ -31,7 +31,7 @@ SQL
         $_SESSION['name'] = $user['name'];
         $_SESSION['firstname'] = $user['firstname'];
         $_SESSION['email'] = $email;
-        header("Location: http://localhost/miseEnSituationS4/phpLegacy/php/profil.php");
+        header("Location: http://localhost/mise-en-situation-s.4/phpLegacy/php/profil.php");
         exit();
         
         

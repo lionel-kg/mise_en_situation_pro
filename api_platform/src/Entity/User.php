@@ -2,15 +2,16 @@
 
 namespace App\Entity;
 
+use App\Entity\MediaObject;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use App\Controller\GetUserController;
 use App\Controller\GetImageController;
 use ApiPlatform\Core\Annotation\ApiResource;
-use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -99,7 +100,8 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="blob", nullable=true)
+    * @ORM\ManyToOne(targetEntity=MediaObject::class)
+     * @ORM\JoinColumn(nullable=true)
      * @Groups({"image"})
      */
     private $imagefile;
@@ -114,7 +116,7 @@ class User implements UserInterface
      * @var File|null
      * @Assert\NotNull(groups={"file_create"})
      */
-    private $file;
+    private $image;
 
     
      /**
@@ -222,12 +224,12 @@ class User implements UserInterface
 
         return $this;
     }
-    public function getFile(){
-        return $this->file;
+    public function getImage(){
+        return $this->image;
     }
-    public function setFile(?File $file): self
+    public function setImage($image): self
     {
-        $this->file = $file;
+        $this->image = $image;
         return $this;
     }
 

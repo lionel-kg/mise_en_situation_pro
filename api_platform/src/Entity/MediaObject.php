@@ -95,4 +95,7 @@ class MediaObject
     public function getContentUrl(){
         return $this->contentUrl;
     }
+    public function getfilePath(){
+        return $this->filePath;
+    }
 }

@@ -28,7 +28,7 @@ session_start();
             else
             {
                 echo 'extension incorrect';
-                header("location: formImage2.php"); 
+                header("location: formImage2.php?error=extension incorrect"); 
             }
         }
         else
@@ -58,7 +58,7 @@ session_start();
                         <div class="column col-md-12">
                             <div class="img-profil column col-6 mt-2">
                                 <img src=<?php echo $img ?> alt="" width="200px">
-                                <div><a class='change-img' href='http://localhost/miseEnSituationS4/phpLegacy/php/formImage2.php'>changer de photo</a></div>
+                                <div><a class='change-img' href='http://localhost/mise-en-situation-s.4/phpLegacy/php/formImage2.php'>changer de photo</a></div>
                             </div>
                             <div class="column col-6 mt-2">
                                 <div>
@@ -78,7 +78,7 @@ session_start();
                             </div>
                             
                         </div>
-                    </div><div class="btn-deco"><a class="button" href="http://localhost/miseEnSituationS4/phpLegacy/php/logout.php">deconnexion</a></div>
+                    </div><div class="btn-deco"><a class="button" href="http://localhost/mise-en-situation-s.4/phpLegacy/php/logout.php">deconnexion</a></div>
                 </div>
             </div>
         </div>

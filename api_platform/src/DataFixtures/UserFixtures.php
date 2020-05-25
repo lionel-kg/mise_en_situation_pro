@@ -41,7 +41,7 @@ class UserFixtures extends Fixture
         $user->setPassword($this->passwordEncoder->encodePassword($user,'test'));
         $user->setFileName('https://i.pinimg.com/originals/f8/db/c6/f8dbc665e892a01b885ae515309dfa27.jpg');
 
-        $image = null;
+       /*$image = null;
         while (true) {
             $image = @file_get_contents("https://robohash.org/{$user->getUsername()}?size=50x50");
             if (getHttpCode($http_response_header) === 200) {
@@ -49,7 +49,7 @@ class UserFixtures extends Fixture
             }
             echo "Erreur de chargement, {$this->id} : {$user->getUsername()} => re-recupération\n";
         }
-        $user->setImageFile($image);
+       $user->setImageFile($image);*/
         return $user;
     }
 

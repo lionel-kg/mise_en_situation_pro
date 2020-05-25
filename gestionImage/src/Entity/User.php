@@ -45,13 +45,12 @@ class User implements UserInterface
     /**
      * @Assert\EqualTo(propertyPath="password",message="Vous n'avez pas tapé le même mot de passe")
      */
+    public $confirm_password;
+
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $filename;
-
-    
-    public $confirm_password;
 
     /**
      * @ORM\Column(type="blob", nullable=true)

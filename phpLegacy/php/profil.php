@@ -174,7 +174,7 @@ if (move_uploaded_file($imgAtc['tmp_name'],$target_file)){
                             </div>
                             
                         </div>
-                    </div><div class="btn-deco"><a class="button" href="http://localhost/miseEnSituationS4/phpLegacy/php/logout.php">deconnexion</a></div>
+                    </div><div class="btn-deco"><a class="button" href="http://localhost/mise-en-situation-s.4/phpLegacy/php/logout.php">deconnexion</a></div>
                 </div>
             </div>
         </div>

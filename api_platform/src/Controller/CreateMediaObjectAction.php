@@ -25,7 +25,7 @@ final class CreateMediaObjectAction extends AbstractController
         $mediaObject = new MediaObject();
         $mediaObject->file = $uploadedFile;
         $em->persist($mediaObject);
-        //$user->setFile($uploadedFile);
+        $user->setImageFile($mediaObject);
         $user->setFilename('/uploads/user_images/'.$uploadedFile->getClientOriginalName());
         $em->persist($user);
         $em->flush();
