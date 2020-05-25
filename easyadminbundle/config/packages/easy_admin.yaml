@@ -1,0 +1,23 @@
+easy_admin:
+    entities:
+      User:
+        class: App\Entity\User
+        label: "utilisateur"
+        form:
+          fields:
+            - {type: 'group', label: 'Basic Information'}
+            - username
+            - email
+            - password
+            - {property: 'imageFile', type: 'vich_image'}
+        list:
+          actions: ['show', 'edit' , 'delete']
+          filters: ['username']
+        show:
+          fields:
+            - username
+            - email
+            - password
+            - { property: filename , type: 'image', base_path: '%app.path.user_images%'}
+            
+
