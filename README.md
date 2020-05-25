@@ -30,3 +30,7 @@ DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/api_platform?serverVersi
 
 php bin/console doctrine:database:create
 
+puis generer les fixtures avec la commande 
+
+php bin/console doctrine:fixtures:load
+
