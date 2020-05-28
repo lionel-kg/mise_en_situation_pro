@@ -13,7 +13,7 @@ password  	varchar(255)
 
 version symfony 
 
-ajouter cette ligne dans votre ficher .env
+ajouter et modifier cette ligne dans votre ficher .env
 
 DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/profil_user?serverVersion=5.7
 
@@ -24,7 +24,7 @@ lorsque que vous vous connecteur a un utilisateur sa vous redirige a la page ini
 
 version api_platform/react:
 
-ajouter cette ligne dans votre ficher .env
+ajouter et modifier cette ligne dans votre ficher .env
 
 DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/api_platform?serverVersion=5.7
 
@@ -33,4 +33,15 @@ php bin/console doctrine:database:create
 puis generer les fixtures avec la commande 
 
 php bin/console doctrine:fixtures:load
+
+version easyadmin 
+
+ajouter et modifier  cette ligne dans votre ficher .env
+
+DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/easy_admin?serverVersion=5.7
+
+php bin/console doctrine:database:create
+
+
+
 
