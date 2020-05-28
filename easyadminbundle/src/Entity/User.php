@@ -42,7 +42,7 @@ class User implements UserInterface
     private $password;
     
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @var string
      */
     private $filename;
@@ -131,6 +131,10 @@ class User implements UserInterface
     public function getFileName()
     {
         return $this->filename;
+    }
+
+    public function getimage(){
+        return $this->image;
     }
 
     public function eraseCredentials()

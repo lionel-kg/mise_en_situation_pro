@@ -91,9 +91,12 @@ class MediaObject
     {
         return $this->id;
     }
-
     public function getContentUrl(){
         return $this->contentUrl;
+    }
+    public function setFile(?file $file){
+        $this->contentUrl = $file;
+        return $this;
     }
     public function getfilePath(){
         return $this->filePath;

@@ -15,7 +15,7 @@ class ProfilController extends AbstractController
     {
         $user = $this->getUser();
         $filename = $user->getFileName();
-
+        //$user->getImageFile()->getfilePath();
         return $this->render('profil/index.html.twig', [
             'controller_name' => 'ProfilController',
             'filename' => $filename,
